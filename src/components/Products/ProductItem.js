@@ -7,9 +7,9 @@ import { toggleFav } from '../../store/actions/products';
 import {useStore} from '../../hooks-store/store'
 
 
-const ProductItem = props => {
+const ProductItem = React.memo(props => {
 //the [1] means the second argument returned from the useStore hook in this case  dispatch
-const dispatch = useStore()[1];
+const dispatch = useStore(false)[1];
   
   const toggleFavHandler = () => {
     // dispatch(toggleFav(props.id));
@@ -31,6 +31,6 @@ const dispatch = useStore()[1];
       </div>
     </Card>
   );
-};
+});
 
 export default ProductItem;
