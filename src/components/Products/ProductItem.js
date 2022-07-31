@@ -4,16 +4,17 @@ import React, {useContext} from 'react';
 import Card from '../UI/Card';
 import './ProductItem.css';
 import { toggleFav } from '../../store/actions/products';
-import { ProductsContext } from '../../context/products-context'
+import {useStore} from '../../hooks-store/store'
+
 
 const ProductItem = props => {
-  
-  const toggleFav = useContext(ProductsContext).toggleFav;
-
+//the [1] means the second argument returned from the useStore hook in this case  dispatch
+const dispatch = useStore()[1];
   
   const toggleFavHandler = () => {
     // dispatch(toggleFav(props.id));
-    toggleFav(props.id)
+    // toggleFav(props.id)
+    dispatch('TOGGLE_FAV', props.id);
   };
 
   return (
